@@ -5,13 +5,41 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "setup-project": "npm i && cd client && npm i",
+    "dev": "nodemon server.js",
+    "watch": "node --watch server.js "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KanhaiyaPandey/MAYA.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KanhaiyaPandey/MAYA/issues"
+  },
+  "homepage": "https://github.com/KanhaiyaPandey/MAYA#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.41.0",
+    "concurrently": "^8.2.2",
+    "cookie-parser": "^1.4.6",
+    "datauri": "^4.1.0",
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "express-async-errors": "^3.1.1",
-    "http-status-codes": "^2.3.0"
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^7.1.4",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.0.0",
+    "http-status-codes": "^2.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.0.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nanoid": "^5.0.3",
+    "nodemon": "^3.0.1"
   }
 }

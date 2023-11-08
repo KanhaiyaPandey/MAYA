@@ -1,10 +1,9 @@
-import { Router } from "express";
+import { Router } from 'express';
+import { register, login } from '../controllers/authControllers.js';
+import { validateLoginInput, validateRegisterInput } from '../middlewares/validationMiddleware.js';
 const router = Router();
-import upload from "../middlewares/multerMiddleware.js";
-import { register, login } from "../controllers/authControllers.js";
-import { authenticateUser } from "../middlewares/authMiddleWare.js";
 
-router.post("/register",upload.single("picture"),register );
-router.post("/login", authenticateUser, login)
+router.post('/register', validateRegisterInput ,register);
+router.post('/login',validateLoginInput, login);
 
 export default router;

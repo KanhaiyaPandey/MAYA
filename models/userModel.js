@@ -1,55 +1,19 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+const url = "https://i.stack.imgur.com/34AD2.jpg";
 
-const UserSchema = new mongoose.Schema(
-    {
-        firstName: {
-            type: String,
-            required: true,
-            min: 3,
-            max: 20,
-        },
+const UserSchema = new mongoose.Schema({
 
-       lastName: {
-        type: String,
-            required: true,
-            min: 3,
-            max: 20,
-       },
-     
-       email: {
-        type: String,
-            required: true,
-            max: 20,
-            unique: true
-       },
+    name: String,
+    email: String,
+    username: String,
+    password: String,
+    following:[
+         {
+        type: Array  
+    }
+] ,
+  profilePic: {type: String, default: url},
+  isAdmin: {type: Boolean, default: false}
+});
 
-       password: {
-        type: String,
-            required: true,
-            min: 8,
-       },
-
-       
-       picturePath: {
-        type: String,
-        default: "",
-            
-       },
-
-      friends : {
-         type: Array,
-         default: [],
-      },
-
-      location: String,
-      occupation: String,
-      viewedProfile: Number,
-      impression: Number,
-
-    },
-
-    { timestamps: true }
-);
-
-const User = mongoose.model("User", UserSchema);
-export default User;
+export default mongoose.model('User', UserSchema);
