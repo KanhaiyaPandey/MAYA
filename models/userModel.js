@@ -9,11 +9,25 @@ const UserSchema = new mongoose.Schema({
     password: String,
     following:[
          {
-        type: Array  
-    }
+            type: mongoose.Types.ObjectId,
+            ref: "User"  
+        }
 ] ,
+
+followers: [
+    {
+    type: mongoose.Types.ObjectId,
+    ref: "User"
+  }
+],
   profilePic: {type: String, default: url},
   isAdmin: {type: Boolean, default: false}
 });
+
+UserSchema.methods.toJSON = function(){
+  let obj = this.toObject();
+  delete obj.password
+  return obj;
+ }
 
 export default mongoose.model('User', UserSchema);

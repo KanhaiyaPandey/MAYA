@@ -13,6 +13,7 @@ import cookieParser from "cookie-parser";
 // routes
 import authRouter from './routes/authRoutes.js';
 import postRoutes from "./routes/postsRoutes.js"
+import userRoutes from "./routes/userRoutes.js"
 
 // middlewares
 import errorHandler from "./middlewares/errorHandler.js";
@@ -29,8 +30,10 @@ app.use(cookieParser());
 app.use(errorHandler);
 app.use(express.json());
 
-app.use("/api/v1/posts", authenticateUser, postRoutes)
-app.use('/api/v1/auth', authRouter);
+app.use("/api/maya/user",authenticateUser,userRoutes);
+app.use("/api/maya/posts", authenticateUser, postRoutes)
+app.use('/api/maya/auth', authRouter);
+
 
 
 

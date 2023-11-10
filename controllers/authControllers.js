@@ -26,7 +26,7 @@ export const register = async (req, res) => {
     const isValidUser = user && (await comparePassword(req.body.password, user.password));
     if(!isValidUser) throw new UnauthenticatedError("invalid credentials");
 
-      const token = createJWT({userId: user._id, role: user.isAdmin});
+      const token = createJWT({userId: user._id, role: user.isAdmin, username: user.username, following: user.following});
       const oneDay = 60*60*1000*24;
 
       res.cookie("token", token,{ 
@@ -34,8 +34,10 @@ export const register = async (req, res) => {
       expires: new Date(Date.now() + oneDay),
       secure: process.env.NODE_ENV === "production"
       })
-        res.status(StatusCodes.OK).json({msg: "user logged in"})
+        res.status(StatusCodes.OK).json({msg: "logged in successfully"})
       
 };
+
+
 
 
